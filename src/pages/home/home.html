@@ -1,14 +1,24 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Fire M
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-list>
+
+        <ion-item (click)="openChat(chat)" *ngFor="let chat of chats | async">
+            <ion-avatar item-start>
+                <img src="{{chat.image}}">
+            </ion-avatar>
+            <h2>{{chat.name}}</h2>
+            <h3>Don't Know What To Do!</h3>
+            <p>I've had a pretty messed up day. If we just...</p>
+        </ion-item>
+    </ion-list>
+    <ion-fab right bottom>
+        <button ion-fab color="light"><ion-icon name="add" ></ion-icon></button>
+    </ion-fab>
 </ion-content>
