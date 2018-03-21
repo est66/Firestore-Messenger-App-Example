@@ -22,13 +22,31 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
   }
 
-  register(email, password, confirmPassword) {
+  async register(email, password, confirmPassword) {
+
     if (password != confirmPassword) return alert("error password");
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
+    const userResult = await this.afAuth.auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(error.message);
+    }).then(function (userResult) {
+
+      var db = firebase.firestore();
+      db.collection("users").doc(userResult.uid).set({
+        uid: userResult.uid,
+        email: userResult.email
+      })
+        .then(function () {
+          console.log("User successfully added!");
+        })
+        .catch(function (error) {
+          console.error("Error writing user: ", error);
+        });
     });
+
+
+
+
   }
 
 

@@ -1,8 +1,13 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            Fire M
+            Firestore M
         </ion-title>
+        <ion-buttons right (click)="logout()">
+            <button ion-button icon-only>
+              <ion-icon name='exit'></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -14,11 +19,9 @@
                 <img src="{{chat.image}}">
             </ion-avatar>
             <h2>{{chat.name}}</h2>
-            <h3>Don't Know What To Do!</h3>
-            <p>I've had a pretty messed up day. If we just...</p>
         </ion-item>
     </ion-list>
-    <ion-fab right bottom>
-        <button ion-fab color="light"><ion-icon name="add" ></ion-icon></button>
+    <ion-fab right bottom (click)="presentPopover($event)">
+        <button ion-fab color="secondary"><ion-icon name="add" ></ion-icon></button>
     </ion-fab>
 </ion-content>

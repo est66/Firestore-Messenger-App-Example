@@ -1,6 +1,7 @@
 export interface Chat {
-  id: string;
+  id?: string;
   name: string;
   image: string;
-  createdAt: Date
+  createdAt: any;
+  users?: any[];
 }

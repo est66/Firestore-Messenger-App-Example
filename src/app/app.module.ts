@@ -17,6 +17,7 @@ import { ChatPage } from '../pages/chat/chat';
 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { NewChatPage } from '../pages/new-chat/new-chat';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegisterPage } from '../pages/register/register';
     HomePage,
     ChatPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    NewChatPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { RegisterPage } from '../pages/register/register';
     HomePage,
     ChatPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    NewChatPage
 
   ],
   providers: [
