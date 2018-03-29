@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-    <ion-navbar>
+    <ion-navbar color="secondary">
         <ion-title>{{chat.name}}</ion-title>
     </ion-navbar>
 
@@ -19,7 +19,7 @@
     <ion-card *ngFor="let message of messages | async">
 
         <ion-card-header style="color:grey">
-            {{message.createdAt| date: 'HH:mm dd/MM/yyyy'}}
+            {{message.createdAt| date: 'HH:mm dd/MM/yyyy'}} <br> {{message.email}}
         </ion-card-header>
 
         <ion-card-content>

@@ -18,6 +18,9 @@ import { ChatPage } from '../pages/chat/chat';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { NewChatPage } from '../pages/new-chat/new-chat';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
 
 
 @NgModule({
@@ -50,6 +53,9 @@ import { NewChatPage } from '../pages/new-chat/new-chat';
   providers: [
     StatusBar,
     SplashScreen,
+    FileChooser,
+    FilePath,
+    File,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
 
   ]

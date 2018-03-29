@@ -18,9 +18,9 @@ export class ChatPage {
   message: string;
   private messagesCollection: AngularFirestoreCollection<Message>;
   chat: Chat;
-
-
+  currentUser: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore, public popoverCtrl: PopoverController) {
+    this.currentUser = firebase.auth().currentUser;
     this.chat = navParams.get('chat');
     try {
       this.messages = afs.collection<Message>('messages', ref => ref.where('chatId', '==', this.chat.id).orderBy("createdAt", "asc")).valueChanges();
@@ -39,14 +39,20 @@ export class ChatPage {
 
 
   }
-  async sendMessage(message) {
+
+
+  async sendMessage(message: string) {
+    if (message == undefined || message.length < 1) return console.log("no message to send");
     var db = firebase.firestore();
     var user = firebase.auth().currentUser;
     var userId = user.uid;
+    var userEmail = user.email;
+    var storage = firebase.storage();
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     await db.collection("messages").add({
       chatId: this.chat.id,
       content: message,
+      email: userEmail,
       uid: userId,
       createdAt: timestamp
     })

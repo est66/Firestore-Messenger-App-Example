@@ -4,4 +4,5 @@ export interface Chat {
   image: string;
   createdAt: any;
   users?: any[];
+
 }
